@@ -289,7 +289,7 @@ Material:
     m_Floats:
     - Vector1_8130C415: 0
     - Vector1_931066C3: 5
-    - Vector1_9540B086: 3
+    - Vector1_9540B086: 1.5
     - _AORemapMax: 1
     - _AORemapMax0: 1
     - _AORemapMax1: 1

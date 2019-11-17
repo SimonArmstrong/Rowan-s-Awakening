@@ -15,27 +15,37 @@ public class Player : MonoBehaviour
     }
 
     private void HandleMovement() {
-        Vector3 movement = Joystick();
+        Vector3 movement = LeftJoystick();
 
-        float m = Mathf.Abs(movement.x) + Mathf.Abs(movement.z);
-        anim.SetFloat(StaticStrings.anim_moveSpeed, Mathf.Clamp01(m));
-        anim.SetFloat(StaticStrings.anim_horizontal, movement.normalized.x);
-        anim.SetFloat(StaticStrings.anim_vertical, movement.normalized.y);
+        anim.SetFloat(StaticStrings.anim_moveSpeed, movement.magnitude);
+        anim.SetFloat(StaticStrings.anim_horizontal, movement.x);
+        anim.SetFloat(StaticStrings.anim_vertical, movement.y);
 
-        Vector3 lookPos = transform.position + movement;
+        Vector3 lookPos = transform.position + movement - transform.position;
 
         Quaternion tr = Quaternion.LookRotation(lookPos);
-        Quaternion targetRot = Quaternion.Slerp(transform.rotation, tr, Time.deltaTime * m * rotateSpeed);
+        Quaternion targetRot = Quaternion.Slerp(transform.rotation, tr, Time.deltaTime * movement.magnitude * rotateSpeed);
         transform.rotation = targetRot;
+
+        //cameraTransform.GetComponent<Cinemachine.CinemachineFreeLook>().m_XAxis.m_InputAxisValue = RightJoystick().x;
+        //cameraTransform.GetComponent<Cinemachine.CinemachineFreeLook>().m_YAxis.m_InputAxisValue = RightJoystick().z;
+        //cameraTransform.GetComponent<Cinemachine.CinemachineVirtualCamera>().GetCinemachineComponent<Cinemachine.CinemachineFramingTransposer>().m_ScreenY = RightJoystick().z;
 
         transform.position += movement.normalized * Time.deltaTime * moveSpeed;
     }
 
-    private Vector3 Joystick() {
-        Vector3 x = Input.GetAxisRaw(StaticStrings.horizontal) * cameraTransform.right;
-        Vector3 y = Input.GetAxisRaw(StaticStrings.vertical) * cameraTransform.forward;
+    private Vector3 LeftJoystick() {
+        Vector3 x = Input.GetAxisRaw(StaticStrings.horizontal) * Camera.main.transform.right;
+        Vector3 y = Input.GetAxisRaw(StaticStrings.vertical) * Camera.main.transform.forward;
         Vector3 r = x + y;
         r.y = 0;
+        return r;
+    }
+
+    private Vector3 RightJoystick() {
+        float x = Input.GetAxisRaw(StaticStrings.r_horizontal);
+        float y = Input.GetAxisRaw(StaticStrings.r_vertical);
+        Vector3 r = new Vector3(x, y, 0);
         return r;
     }
 }

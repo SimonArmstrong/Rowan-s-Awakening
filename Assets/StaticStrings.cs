@@ -6,6 +6,8 @@ public static class StaticStrings
 {
     public static string horizontal = "Horizontal";
     public static string vertical = "Vertical";
+    public static string r_horizontal = "RHorizontal";
+    public static string r_vertical = "RVertical";
 
     public static string anim_horizontal = "horizontal";
     public static string anim_vertical = "vertical";
