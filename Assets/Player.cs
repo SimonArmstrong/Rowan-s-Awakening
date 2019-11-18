@@ -7,7 +7,6 @@ public class Player : MonoBehaviour
     [SerializeField] private Animator anim;
     [SerializeField] private float moveSpeed = 5;
     [SerializeField] private float rotateSpeed = 30;
-    [SerializeField] private Transform cameraTransform;
 
     private void FixedUpdate()
     {
@@ -26,12 +25,8 @@ public class Player : MonoBehaviour
         Quaternion tr = Quaternion.LookRotation(lookPos);
         Quaternion targetRot = Quaternion.Slerp(transform.rotation, tr, Time.deltaTime * movement.magnitude * rotateSpeed);
         transform.rotation = targetRot;
-
-        //cameraTransform.GetComponent<Cinemachine.CinemachineFreeLook>().m_XAxis.m_InputAxisValue = RightJoystick().x;
-        //cameraTransform.GetComponent<Cinemachine.CinemachineFreeLook>().m_YAxis.m_InputAxisValue = RightJoystick().z;
-        //cameraTransform.GetComponent<Cinemachine.CinemachineVirtualCamera>().GetCinemachineComponent<Cinemachine.CinemachineFramingTransposer>().m_ScreenY = RightJoystick().z;
-
-        transform.position += movement.normalized * Time.deltaTime * moveSpeed;
+        
+        transform.position += movement.normalized * movement.magnitude * Time.deltaTime * moveSpeed;
     }
 
     private Vector3 LeftJoystick() {
