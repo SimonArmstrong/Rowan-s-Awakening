@@ -78,7 +78,7 @@ MonoBehaviour:
     m_Value: 1
   maximumRadiusInPixels:
     m_OverrideState: 1
-    m_Value: 32
+    m_Value: 25
     min: 16
     max: 256
   directLightingStrength:

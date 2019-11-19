@@ -8,8 +8,12 @@ public static class StaticStrings
     public static string vertical = "Vertical";
     public static string r_horizontal = "RHorizontal";
     public static string r_vertical = "RVertical";
+    public static string rightBumper = "RightBumper";
+    public static string leftBumper = "LeftBumper";
+    public static string jump = "Jump";
 
     public static string anim_horizontal = "horizontal";
     public static string anim_vertical = "vertical";
     public static string anim_moveSpeed = "moveSpeed";
+    public static string anim_lockon = "lockon";
 }

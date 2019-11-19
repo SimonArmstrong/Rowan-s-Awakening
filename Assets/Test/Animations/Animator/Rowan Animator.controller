@@ -250,7 +250,7 @@ BlendTree:
     m_Motion: {fileID: -203655887218126122, guid: dab018968a7db214ba4d6d65bad8d984,
       type: 3}
     m_Threshold: 0
-    m_Position: {x: -1, y: 0}
+    m_Position: {x: 1, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: horizontal
@@ -259,7 +259,7 @@ BlendTree:
     m_Motion: {fileID: -203655887218126122, guid: 89ebdbd70daec9d4194e9984c608d284,
       type: 3}
     m_Threshold: 0
-    m_Position: {x: 1, y: 0}
+    m_Position: {x: -1, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: horizontal
@@ -268,7 +268,7 @@ BlendTree:
     m_Motion: {fileID: -203655887218126122, guid: 5ac95fef93ba21040a60aadfd83fe9aa,
       type: 3}
     m_Threshold: 0
-    m_Position: {x: 0, y: 1}
+    m_Position: {x: 0, y: -1}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: horizontal
@@ -277,7 +277,7 @@ BlendTree:
     m_Motion: {fileID: -203655887218126122, guid: c33cc21060f4b45459e7bdf98a34c78f,
       type: 3}
     m_Threshold: 0
-    m_Position: {x: 0, y: -1}
+    m_Position: {x: 0, y: 1}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: horizontal
@@ -286,7 +286,7 @@ BlendTree:
     m_Motion: {fileID: -203655887218126122, guid: dab018968a7db214ba4d6d65bad8d984,
       type: 3}
     m_Threshold: 0
-    m_Position: {x: -0.5, y: 0}
+    m_Position: {x: 0.5, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: horizontal
@@ -295,7 +295,7 @@ BlendTree:
     m_Motion: {fileID: -203655887218126122, guid: 89ebdbd70daec9d4194e9984c608d284,
       type: 3}
     m_Threshold: 0
-    m_Position: {x: 0.5, y: 0}
+    m_Position: {x: -0.5, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: horizontal
@@ -304,7 +304,7 @@ BlendTree:
     m_Motion: {fileID: -203655887218126122, guid: 749983145bb1c2d49b967ad3c2df7a2e,
       type: 3}
     m_Threshold: 0
-    m_Position: {x: 0, y: 0.5}
+    m_Position: {x: 0, y: -0.5}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: horizontal
@@ -313,7 +313,7 @@ BlendTree:
     m_Motion: {fileID: -203655887218126122, guid: 04c589f54a8cadc45b39a5b3b6083758,
       type: 3}
     m_Threshold: 0
-    m_Position: {x: 0, y: -0.5}
+    m_Position: {x: 0, y: 0.5}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: horizontal
