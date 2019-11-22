@@ -25,7 +25,7 @@ Material:
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
+  m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2450
   stringTagMap:
@@ -81,10 +81,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_245B9543: 1
     - Vector1_7C4934EA: 0.938
     - Vector1_8130C415: 0
-    - Vector1_931066C3: 1
-    - Vector1_9540B086: 1
+    - Vector1_931066C3: 1.5
+    - Vector1_9540B086: 0.6
     - _AlphaClip: 0
     - _AlphaCutoff: 0.5
     - _AlphaCutoffEnable: 0
@@ -97,6 +98,7 @@ Material:
     - _CullMode: 2
     - _CullModeForward: 2
     - _Cutoff: 0.5
+    - _DiffusionProfileHash: 2.9579127
     - _DoubleSidedEnable: 0
     - _DoubleSidedNormalMode: 2
     - _DstBlend: 0
@@ -110,15 +112,15 @@ Material:
     - _ReceiveShadows: 1
     - _ReceivesSSR: 1
     - _RenderQueueType: 1
-    - _RequireSplitLighting: 0
+    - _RequireSplitLighting: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _StencilRef: 2
+    - _StencilRef: 1
     - _StencilRefDepth: 0
     - _StencilRefDistortionVec: 64
-    - _StencilRefGBuffer: 2
+    - _StencilRefGBuffer: 1
     - _StencilRefMV: 128
     - _StencilWriteMask: 3
     - _StencilWriteMaskDepth: 48
@@ -137,10 +139,11 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
-    - Color_27EDD982: {r: 0.8980392, g: 0.66181386, b: 0.5882353, a: 1}
+    - Color_27EDD982: {r: 1, g: 0.47368598, b: 0.4198113, a: 1}
     - Color_7714EAC6: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 0}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _DiffusionProfileAsset: {r: 1.1613939e-34, g: 726.4006, b: -0.013906338, a: -3.1644736e-38}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _Light_Direction: {r: 0.5, g: 0.5, b: -0.5, a: 0.5}

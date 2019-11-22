@@ -44,7 +44,7 @@ MonoBehaviour:
     supportSSR: 0
     supportSSAO: 1
     supportSubsurfaceScattering: 1
-    increaseSssSampleCount: 0
+    increaseSssSampleCount: 1
     supportVolumetrics: 1
     increaseResolutionOfVolumetrics: 0
     supportLightLayers: 0
@@ -120,7 +120,9 @@ MonoBehaviour:
   enableSRPBatcher: 1
   shaderVariantLogLevel: 0
   diffusionProfileSettings: {fileID: 0}
-  diffusionProfileSettingsList: []
+  diffusionProfileSettingsList:
+  - {fileID: 11400000, guid: 30601a07a399354469d763bc534a2c81, type: 2}
+  - {fileID: 11400000, guid: 7ec22fa6dd4620d429636a3df4c5e67a, type: 2}
   m_Version: 6
   m_ObsoleteFrameSettings:
     overrides: 0
