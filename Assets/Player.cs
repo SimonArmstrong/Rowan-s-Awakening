@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float moveSpeed = 5;
     [SerializeField] private float rotateSpeed = 30;
     [SerializeField] private float stepHeight = 0.1f;
+    [SerializeField] private float stepCorrectHeight = 0.3f;
+    [SerializeField] private float stepSmoothing = 30;
     [SerializeField] private float heightCheck = 0.4f;
     [SerializeField] private float widthCheck = 0.275f;
     [SerializeField] private float jumpForce = 30;
@@ -173,17 +175,23 @@ public class Player : MonoBehaviour
     public void CheckGrounding() {
         RaycastHit hit;
         Vector3 castPoint = transform.position + (Vector3.up * stepHeight);
-        grounded = Physics.Raycast(new Ray(castPoint, Vector3.down), out hit, stepHeight, gameObject.layer);
+
+        RaycastHit groundHit;
+        Physics.Raycast(new Ray(transform.position, Vector3.down), out groundHit, stepCorrectHeight, gameObject.layer);
+
+        float distToGround = (groundHit.point - transform.position).magnitude;
+
+        grounded = Physics.Raycast(new Ray(castPoint, Vector3.down), out hit, stepHeight + stepCorrectHeight, gameObject.layer);
 
         if (grounded)
         {
-            //if (Mathf.Abs((transform.position - hit.point).magnitude) > 0.05f)
-            //{
-            //    transform.position = Vector3.Lerp(transform.position, hit.point, Time.deltaTime * 10);
-            //}
-            //else {
+            if (Mathf.Abs((transform.position - hit.point).magnitude) > 0.05f)
+            {
+                transform.position = Vector3.Lerp(transform.position, hit.point, Time.deltaTime * stepSmoothing);
+            }
+            else {
                 transform.position = hit.point;
-            //}
+            }
             rigidbody.drag = 20;
             rigidbody.useGravity = false;
         }
