@@ -38,10 +38,10 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3060498331422829078}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: b2ba4696d8d70f847be689a55847ba10, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.22
+  m_Radius: 0.3
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
@@ -92,28 +92,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 115f07f6888cd5b48a3cc464228091f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 340133680912762364}
   moveInputThreshold: 0.2
-  moveSpeed: 6
+  moveSpeed: 10.6
   rotateSpeed: 200
-  stepHeight: 0.3
-  heightCheck: 0.7
-  widthCheck: 0.275
-  jumpForce: 45
+  ledgeGrabHeight: 0.7
+  widthCheck: 0.32
+  jumpForce: 6
+  feetOffset: 0.05
   animationBlendSmoothing: 20
   locomotionState: 0
+  stepHeight: 0.4
+  stepSmoothing: 30
+  stepCorrectHeight: 0.3
+  heightCheck: 0.7
   groundNormalTransform: {fileID: 0}
   groundNormalSmoothTime: 30
   minSlopeFlatness: 0.66
   grounded: 0
+  anim: {fileID: 340133680912762364}
   freeLookCamera: {fileID: 0}
-  headTransform: {fileID: 447368647802818161}
-  headHeightTransform: {fileID: 3407204877756149311}
   groundNormalAngleDebugTextbox: {fileID: 0}
   forwardGroundNormalAngleDebugTextbox: {fileID: 0}
+  headTransform: {fileID: 447368647802818161}
+  leftFootTransform: {fileID: 0}
+  rightFootTransform: {fileID: 0}
+  leftHandTransform: {fileID: 0}
+  rightHandTransform: {fileID: 0}
+  headHeightTransform: {fileID: 3407204877756149311}
+  canLedgeGrab: 0
+  jumping: 0
+  jumpInput: 0
   showGroundNormal: 0
   showGroundCheckRay: 1
   showInput: 1
+  showLedgeGrabRay: 0
   movement: {x: 0, y: 0, z: 0}
 --- !u!54 &3407204877297922014
 Rigidbody:
@@ -390,6 +402,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 4436829760782469501, guid: 8dfc397482481d249bbc4a995a9bcc93,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7007650227998529439, guid: 8dfc397482481d249bbc4a995a9bcc93,
         type: 3}
       propertyPath: m_Layer
@@ -415,6 +432,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 7957238264371128456, guid: 8dfc397482481d249bbc4a995a9bcc93,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7475259027989177923, guid: 8dfc397482481d249bbc4a995a9bcc93,
         type: 3}
       propertyPath: m_Layer
@@ -435,11 +457,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 4436829760782469501, guid: 8dfc397482481d249bbc4a995a9bcc93,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 3772551937752447412, guid: 8dfc397482481d249bbc4a995a9bcc93,
         type: 3}
       propertyPath: m_Layer
@@ -456,11 +473,6 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -6507621502745489020, guid: 8dfc397482481d249bbc4a995a9bcc93,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7957238264371128456, guid: 8dfc397482481d249bbc4a995a9bcc93,
         type: 3}
       propertyPath: m_Layer
       value: 9

@@ -3,61 +3,111 @@
 public class Player : MonoBehaviour
 {
     private enum LocomotionState { normal, lockon }
-    [SerializeField] private Animator anim;
+
     [Header("Settings")]
     [SerializeField, Tooltip("How far the player needs to move the joystick before any movement input is recived. Excess input is used for rotation")]
     private float moveInputThreshold = 0.12f;
-
     [SerializeField] private float moveSpeed = 5;
     [SerializeField] private float rotateSpeed = 30;
-    [SerializeField] private float stepHeight = 0.1f;
-    [SerializeField] private float stepCorrectHeight = 0.3f;
-    [SerializeField] private float stepSmoothing = 30;
-    [SerializeField] private float heightCheck = 0.4f;
-    [SerializeField] private float widthCheck = 0.275f;
-    [SerializeField] private float jumpForce = 30;
+    [SerializeField] private float widthCheck = 0.32f;
     [SerializeField] private float animationBlendSmoothing = 5f;
     [SerializeField] private LocomotionState locomotionState;
+
+    [Header("Vaulting Settings")]
+    [SerializeField] private float ledgeGrabHeight = 0.3f;
+    [SerializeField] private float jumpToLedgeGrabHeight = 1.7f;
+    [SerializeField] private float mountHeight = 0.55f;
+    [SerializeField] private float hopHeight = 0.32f;
+
+    [Header("Jump Settings")]
+    [SerializeField] private float jumpHeight = 30;
+    [SerializeField] private float forwardGroundDistanceToJump = 0.5f;
+
+
+    [Header("Step Settings")]
+    [SerializeField] private float stepHeight = 0.1f;
+    [SerializeField] private float stepSmoothing = 30;
+    [SerializeField] private float stepCorrectHeight = 0.3f;
+
     [Header("Grounding")]
+    [SerializeField] private float heightCheck = 0.4f;
     [SerializeField] private Transform groundNormalTransform;
     [SerializeField] private float groundNormalSmoothTime = 200;
     [SerializeField, Range(0.1f, 0.9f)] private float minSlopeFlatness;
     [SerializeField] private bool grounded = false;
+
     [Header("Attachments")]
+    [SerializeField] private Model model;
     [SerializeField] private GameObject freeLookCamera;
-    public Transform headTransform;
-    public Transform headHeightTransform;
     public TMPro.TextMeshProUGUI groundNormalAngleDebugTextbox;
     public TMPro.TextMeshProUGUI forwardGroundNormalAngleDebugTextbox;
 
+    [Header("Transforms")]
+    public Transform headHeightTransform;
+
+    [Header("Action Flags")]
+    public bool shouldLedgeGrab;
+    public bool canJumpToLedgeGrab;
+    public bool canMount;
+    public bool canHop;
+
+    [Header("States")]
+    public bool jumping;
+
     [Header("Action Triggers")]
-    [SerializeField] private bool triggerJump = false;
+    [SerializeField] private bool jumpInput = false;
 
     [Header("Debug")]
     [SerializeField] private bool showGroundNormal;
     [SerializeField] private bool showGroundCheckRay;
     [SerializeField] private bool showInput;
+    [SerializeField] private bool showLedgeGrabRay;
+    [SerializeField] private bool showVaultRay;
     [SerializeField] public Vector3 movement;
 
     private new Rigidbody rigidbody;
+    private bool stepAdjust = true;
 
     // Called on Start in PlayerManager
     public void Init() {
+        UpdateGroundNormalTransform();
         rigidbody = GetComponent<Rigidbody>();
+        if (model == null) model = GetComponentInChildren<Model>();
+        model.stepHeight = stepHeight;
+        model.Init();
     }
 
     // Called on Update in PlayerManager
     public void Tick() {
+        HandleActionInputs();
         CheckGrounding();
+        CheckForHop();
+        CheckForMount();
+        CheckForJumpToLedgeGrab();
+        UpdateGroundNormalTransform();
     }
 
     // Called on FixedUpdate in PlayerManager
     public void FixedTick() {
-        UpdateGroundNormalTransform();
         HandleLocomotionState();
         HandleCamera();
-        HandleJumping();
+        HandleLedgeGrab();
         HandleMovement();
+        HandleJumping();
+    }
+
+    // -------------------------------------------
+
+    private void HandleActionInputs() {
+        jumpInput = Input.GetButtonDown(StaticStrings.jump);
+    }
+
+    private void HandleLedgeGrab() {
+        Vector3 ledgePos = GetLedgeGrabHit().point;
+        if (!grounded && shouldLedgeGrab) {
+            // Grab Ledge
+
+        }
     }
 
     private void HandleLocomotionState()
@@ -67,39 +117,47 @@ public class Player : MonoBehaviour
     }
 
     private void HandleJumping() {
-        if ((Input.GetButtonDown(StaticStrings.jump) && grounded) || triggerJump) {
-            rigidbody.AddForce(jumpForce * ((Vector3.up * 1.5f)), ForceMode.VelocityChange);
-            triggerJump = false;
+        if (grounded && jumpInput) {
+            rigidbody.velocity = Vector3.zero;
+            rigidbody.AddForce(movement + (Vector3.up * jumpHeight), ForceMode.VelocityChange);
+            jumpInput = false;
+            jumping = true;
+
+            if(model.anim != null)
+                model.anim.CrossFade("Jump", 0.2f);
         }
     }
 
-    public void Jump() {
-        triggerJump = true;
+    private void HandleCamera() {
+        Cinemachine.CinemachineFreeLook cam = freeLookCamera.GetComponent<Cinemachine.CinemachineFreeLook>();
+        Cinemachine.CinemachineBrain brain = Camera.main.transform.GetComponent<Cinemachine.CinemachineBrain>();
+
+        bool lButton = locomotionState == LocomotionState.lockon;
+        cam.m_RecenterToTargetHeading.m_enabled = lButton;
+        //cam.m_BindingMode = lButton ? Cinemachine.CinemachineTransposer.BindingMode.LockToTarget : Cinemachine.CinemachineTransposer.BindingMode.SimpleFollowWithWorldUp;
     }
 
     private void HandleMovement() {
-        Vector3 moveDirection = LeftJoystick();
+        Vector3 moveDirection = CameraRelativeLeftJoystick();
 
-        if (anim != null) {
+        if (model.anim != null) {
             Vector3 physicsInput = rigidbody.velocity;
             physicsInput.y = 0;
-            float targetX = Vector3.ClampMagnitude(physicsInput, 1).x;
-            float targetY = Vector3.ClampMagnitude(physicsInput, 1).z;
+            float targetX = Vector3.ClampMagnitude(LeftJoystick(), 1).x;
+            float targetY = Vector3.ClampMagnitude(LeftJoystick(), 1).z;
             // Set moveSpeed in animator
-            anim.SetFloat(StaticStrings.anim_moveSpeed, Vector3.ClampMagnitude((physicsInput / moveSpeed) * 2, 1).magnitude);
+            model.anim.SetFloat(StaticStrings.anim_moveSpeed, Vector3.ClampMagnitude((physicsInput / moveSpeed) * 2, 1).magnitude);
             // Set horizontal in animator
-            anim.SetFloat(StaticStrings.anim_horizontal, Mathf.Lerp(anim.GetFloat(StaticStrings.anim_horizontal), targetX, Time.deltaTime * animationBlendSmoothing));
+            model.anim.SetFloat(StaticStrings.anim_horizontal, targetX);
             // Set vertical in animator
-            anim.SetFloat(StaticStrings.anim_vertical, Mathf.Lerp(anim.GetFloat(StaticStrings.anim_vertical), targetY, Time.deltaTime * animationBlendSmoothing));
+            model.anim.SetFloat(StaticStrings.anim_vertical, targetY);
             // Set lockon in animator
-            anim.SetBool(StaticStrings.anim_lockon, locomotionState == LocomotionState.lockon);
+            model.anim.SetBool(StaticStrings.anim_lockon, locomotionState == LocomotionState.lockon);
         }
 
         Vector3 lookPos = locomotionState == LocomotionState.normal ? transform.position + moveDirection - transform.position : transform.forward;
         if (lookPos.magnitude <= 0.01f)
             return;
-
-        headTransform.LookAt(new Vector3(lookPos.x, lookPos.y + headHeightTransform.localPosition.y, lookPos.z));
 
         lookPos.y = 0;
 
@@ -111,12 +169,22 @@ public class Player : MonoBehaviour
         float maxMagnitude = ((transform.position + (Vector3.up * stepHeight)) - (GetForwardHit().point)).magnitude - 0.1f; 
 
         movement = Vector3.ClampMagnitude(moveDirection, 1) * moveSpeed;
+        model.useIK = moveDirection.magnitude < moveInputThreshold;
 
         if (moveDirection.magnitude > moveInputThreshold && grounded) {
             rigidbody.rotation = rotation;
             rigidbody.velocity = movement;
         }
+
+
+        RaycastHit forwardGroundPoint = GetForwardGroundHit();
+        if ((forwardGroundPoint.point.y <= transform.position.y - forwardGroundDistanceToJump)) {
+            if(Flatness(forwardGroundPoint.normal) >= 0.1f)
+                jumpInput = true;
+        }
     }
+
+    // --------------------------------------------
 
     private void UpdateGroundNormalTransform() {
         Vector3 groundNormal = GetGroundHit().point != Vector3.zero ? GetGroundHit().normal : Vector3.up;
@@ -127,6 +195,7 @@ public class Player : MonoBehaviour
         if(groundNormalAngleDebugTextbox != null) groundNormalAngleDebugTextbox.text = (slopeFlatness * 100).ToString("0");
         if(forwardGroundNormalAngleDebugTextbox != null) forwardGroundNormalAngleDebugTextbox.text = (forwardSlopeFlatness * 100).ToString("0");
         
+
         Quaternion groundAngleTargetRotation = Quaternion.LookRotation(parallel, groundNormal);
         Quaternion groundAngleRotation = groundNormalTransform != null
             ? groundAngleRotation = Quaternion.Slerp(groundNormalTransform.rotation, groundAngleTargetRotation, Time.deltaTime * groundNormalSmoothTime)
@@ -149,39 +218,31 @@ public class Player : MonoBehaviour
         if(showGroundNormal) Debug.DrawRay(groundNormalTransform.position, groundNormal, Color.magenta, 5f);
     }
 
-    private Vector3 LeftJoystick() {
-        Vector3 _horizontal = Input.GetAxisRaw(StaticStrings.horizontal) * groundNormalTransform.right;
-        Vector3 _vertical = Input.GetAxisRaw(StaticStrings.vertical) * groundNormalTransform.forward;
-        
-        Vector3 r = _horizontal + _vertical;
-        return r;
+    public void CheckForJumpToLedgeGrab() {
+        Vector3 ledgePos = GetVaultHit(jumpToLedgeGrabHeight, ref canJumpToLedgeGrab).point;
     }
 
-    private Vector3 RightJoystick() {
-        float x = Input.GetAxisRaw(StaticStrings.r_horizontal);
-        float y = Input.GetAxisRaw(StaticStrings.r_vertical);
-        Vector3 r = new Vector3(x, y, 0);
-        return r;
+    public void CheckForHop() {
+        Vector3 ledgePos = GetVaultHit(hopHeight, ref canHop).point;
     }
 
-    private void HandleCamera() {
-        Cinemachine.CinemachineFreeLook cam = freeLookCamera.GetComponent<Cinemachine.CinemachineFreeLook>();
-        bool lButton = locomotionState == LocomotionState.lockon;
-
-        cam.m_RecenterToTargetHeading.m_enabled = lButton;
-        //cam.m_BindingMode = lButton ? Cinemachine.CinemachineTransposer.BindingMode.LockToTarget : Cinemachine.CinemachineTransposer.BindingMode.SimpleFollowWithWorldUp;
+    public void CheckForMount() {
+        Vector3 ledgePos = GetVaultHit(mountHeight, ref canMount).point;
     }
 
     public void CheckGrounding() {
         RaycastHit hit;
         Vector3 castPoint = transform.position + (Vector3.up * stepHeight);
 
-        RaycastHit groundHit;
-        Physics.Raycast(new Ray(transform.position, Vector3.down), out groundHit, stepCorrectHeight, gameObject.layer);
+        // Turn off step adjusting if we're jumping this frame
+        stepAdjust = !jumping;
+        // Total raycast check length
+        float dist = stepAdjust ? stepHeight + stepCorrectHeight : stepHeight - 0.02f;
 
-        float distToGround = (groundHit.point - transform.position).magnitude;
+        grounded = Physics.Raycast(new Ray(castPoint, Vector3.down), out hit, dist, gameObject.layer);
 
-        grounded = Physics.Raycast(new Ray(castPoint, Vector3.down), out hit, stepHeight + stepCorrectHeight, gameObject.layer);
+        if (model.anim != null)
+            model.anim.SetBool("grounded", grounded);
 
         if (grounded)
         {
@@ -194,14 +255,50 @@ public class Player : MonoBehaviour
             }
             rigidbody.drag = 20;
             rigidbody.useGravity = false;
+            jumping = false;
         }
         else {
             rigidbody.drag = 0;
             rigidbody.useGravity = true;
+
+            if (model.anim != null)
+                model.anim.CrossFade("Falling", 0.02f);
         }
 
         if (showGroundCheckRay) Debug.DrawRay(castPoint, Vector3.down * stepHeight);
 
+    }
+
+    public bool IsGroundFlat(Vector3 checkPos) {
+        Vector3 normal = GameEngine.GetGroundHit(checkPos).normal;
+        return Flatness(normal) >= 0.95;
+    }
+
+    public float Flatness(Vector3 normal) {
+        float flatness = Vector3.Dot(Vector3.up, normal);
+        return flatness;
+    }
+
+    private Vector3 CameraRelativeLeftJoystick() {
+        Vector3 _horizontal = Input.GetAxisRaw(StaticStrings.horizontal) * groundNormalTransform.right;
+        Vector3 _vertical = Input.GetAxisRaw(StaticStrings.vertical) * groundNormalTransform.forward;
+        
+        Vector3 r = _horizontal + _vertical;
+        return r;
+    }
+    private Vector3 LeftJoystick()
+    {
+        float _horizontal = Input.GetAxisRaw(StaticStrings.horizontal);
+        float _vertical = Input.GetAxisRaw(StaticStrings.vertical);
+
+        Vector3 r = new Vector3(_horizontal, 0,  _vertical);
+        return r;
+    }
+    private Vector3 RightJoystick() {
+        float x = Input.GetAxisRaw(StaticStrings.r_horizontal);
+        float y = Input.GetAxisRaw(StaticStrings.r_vertical);
+        Vector3 r = new Vector3(x, y, 0);
+        return r;
     }
 
     public RaycastHit GetForwardHit() {
@@ -211,13 +308,42 @@ public class Player : MonoBehaviour
 
         return hit;
     }
-
-    public RaycastHit GetGroundHit()
-    {
+    public RaycastHit GetGroundHit() {
         RaycastHit hit;
         Vector3 castPoint = transform.position + (Vector3.up * stepHeight);
         Physics.Raycast(new Ray(castPoint, Vector3.down), out hit, 1f, gameObject.layer);
 
+        return hit;
+    }
+    public RaycastHit GetForwardGroundHit()
+    {
+        RaycastHit hit;
+        Vector3 castPoint = transform.position + (movement * 0.02f) + (Vector3.up * 10);
+        Physics.Raycast(new Ray(castPoint, Vector3.down), out hit, 100f, gameObject.layer);
+        GameEngine.DrawZPlaneCrossGizmo(hit.point, widthCheck);
+        return hit;
+    }
+    public RaycastHit GetLedgeGrabHit() {
+        RaycastHit hit;
+        Vector3 castPoint = transform.position + (Vector3.up * ledgeGrabHeight) + (transform.forward * widthCheck);
+        shouldLedgeGrab = Physics.Raycast(new Ray(castPoint, Vector3.down), out hit, 1f, gameObject.layer);
+        if (showLedgeGrabRay)
+            Debug.DrawRay(castPoint, Vector3.down, Color.green);
+        return hit;
+    }
+    public RaycastHit GetVaultHit(float vaultHeight, ref bool canDo) {
+        RaycastHit hit;
+        Vector3 castPoint = transform.position + (Vector3.up * vaultHeight) + (transform.forward * widthCheck);
+        bool didHit = Physics.Raycast(new Ray(castPoint, Vector3.down), out hit, 1f, gameObject.layer);
+        Vector3 normal = hit.normal;
+        float flatness = Vector3.Dot(Vector3.up, normal);
+        canDo = flatness >= 0.95 && didHit;
+
+        if (showVaultRay)
+        {
+            GameEngine.DrawZPlaneCrossGizmo(castPoint, widthCheck);
+            Debug.DrawRay(castPoint, Vector3.down, Color.blue);
+        }
         return hit;
     }
 

@@ -5313,7 +5313,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7600444312934745019}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.53, z: -9.83}
+  m_LocalPosition: {x: 219.70663, y: 131.194, z: 378.04718}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1143688279618481069}
@@ -5333,7 +5333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalSpeed: 20
   verticalSpeed: 5
-  target: {fileID: 0}
+  target: {fileID: 4080280018519473446}
 --- !u!1 &8319252185209375389
 GameObject:
   m_ObjectHideFlags: 0
@@ -5464,11 +5464,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3407204877297922008, guid: f71b094621427554da060500f3f925be,
         type: 3}
-      propertyPath: jumpForce
-      value: 45
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407204877297922008, guid: f71b094621427554da060500f3f925be,
-        type: 3}
       propertyPath: animationBlendSmoothing
       value: 20
       objectReference: {fileID: 0}
@@ -5496,11 +5491,6 @@ PrefabInstance:
         type: 3}
       propertyPath: heightCheck
       value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407204877297922008, guid: f71b094621427554da060500f3f925be,
-        type: 3}
-      propertyPath: stepHeight
-      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 3407204877297922008, guid: f71b094621427554da060500f3f925be,
         type: 3}

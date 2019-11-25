@@ -6,6 +6,12 @@ public class SmoothFollow : MonoBehaviour {
     public float horizontalSpeed = 5;
     public float verticalSpeed = 5;
     public Transform target;
+
+    private void OnValidate() {
+        if(target != null)
+            transform.position = target.position;
+    }
+
     private void FixedUpdate()
     {
         float x = Mathf.Lerp(transform.position.x, target.position.x, Time.deltaTime * horizontalSpeed);
