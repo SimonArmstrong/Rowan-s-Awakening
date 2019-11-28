@@ -21,12 +21,12 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
       copied configuration does not match position in animation file:\n\t'mixamorig:LeftUpLeg'
-      : position error = 45.994896 mm\n\t'mixamorig:LeftLeg' : position error = 1029.124023
-      mm\n\t'mixamorig:LeftFoot' : position error = 987.528198 mm\n\t'mixamorig:LeftToeBase'
-      : position error = 363.725433 mm\n\t'mixamorig:RightUpLeg' : position error
-      = 45.369247 mm\n\t'mixamorig:RightLeg' : position error = 1029.384521 mm\n\t'mixamorig:RightFoot'
-      : position error = 987.537048 mm\n\t'mixamorig:RightToeBase' : position error
-      = 361.329590 mm\n"
+      : position error = 15872.208008 mm\n\t'mixamorig:LeftLeg' : position error =
+      66407.093750 mm\n\t'mixamorig:LeftFoot' : position error = 66595.312500 mm\n\t'mixamorig:LeftToeBase'
+      : position error = 20683.292969 mm\n\t'mixamorig:RightUpLeg' : position error
+      = 15872.127930 mm\n\t'mixamorig:RightLeg' : position error = 66407.171875 mm\n\t'mixamorig:RightFoot'
+      : position error = 66595.125000 mm\n\t'mixamorig:RightToeBase' : position error
+      = 20685.546875 mm\n"
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -891,7 +891,7 @@ ModelImporter:
     upperLegTwist: 0.5
     legTwist: 0.5
     armStretch: 0.05
-    legStretch: 0.05
+    legStretch: 0.19
     feetSpacing: 0
     globalScale: 1
     rootMotionBoneName: 

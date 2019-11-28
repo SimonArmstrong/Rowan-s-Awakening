@@ -5452,6 +5452,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8669855838809396666, guid: f71b094621427554da060500f3f925be,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3407204877297922008, guid: f71b094621427554da060500f3f925be,
         type: 3}
       propertyPath: freeLookCamera
@@ -5497,20 +5502,15 @@ PrefabInstance:
       propertyPath: minSlopeFlatness
       value: 0.66
       objectReference: {fileID: 0}
-    - target: {fileID: 340133680912762364, guid: f71b094621427554da060500f3f925be,
-        type: 3}
-      propertyPath: m_UpdateMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8669855838809396666, guid: f71b094621427554da060500f3f925be,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 6658923749367208597, guid: f71b094621427554da060500f3f925be,
         type: 3}
       propertyPath: m_Name
       value: Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 340133680912762364, guid: f71b094621427554da060500f3f925be,
+        type: 3}
+      propertyPath: m_UpdateMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3407204877297922015, guid: f71b094621427554da060500f3f925be,
         type: 3}

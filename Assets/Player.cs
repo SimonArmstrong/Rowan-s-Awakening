@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField] private LocomotionState locomotionState;
 
     [Header("Vaulting Settings")]
+    [SerializeField] private Vector3 vaultPos;
     [SerializeField] private float ledgeGrabHeight = 0.3f;
     [SerializeField] private float jumpToLedgeGrabHeight = 1.7f;
     [SerializeField] private float mountHeight = 0.55f;
@@ -47,15 +48,21 @@ public class Player : MonoBehaviour
 
     [Header("Action Flags")]
     public bool shouldLedgeGrab;
+    public bool shouldVault;
     public bool canJumpToLedgeGrab;
     public bool canMount;
     public bool canHop;
 
     [Header("States")]
     public bool jumping;
+    public bool vaulting;
 
     [Header("Action Triggers")]
     [SerializeField] private bool jumpInput = false;
+    [SerializeField] private bool hop = false;
+    [SerializeField] private bool mount = false;
+    [SerializeField] private bool jumpToLedge = false;
+    [SerializeField] private bool grabLedge = false;
 
     [Header("Debug")]
     [SerializeField] private bool showGroundNormal;
@@ -81,9 +88,7 @@ public class Player : MonoBehaviour
     public void Tick() {
         HandleActionInputs();
         CheckGrounding();
-        CheckForHop();
-        CheckForMount();
-        CheckForJumpToLedgeGrab();
+        CheckVaulting();
         UpdateGroundNormalTransform();
     }
 
@@ -93,6 +98,7 @@ public class Player : MonoBehaviour
         HandleCamera();
         HandleLedgeGrab();
         HandleMovement();
+        HandleVaulting();
         HandleJumping();
     }
 
@@ -106,7 +112,11 @@ public class Player : MonoBehaviour
         Vector3 ledgePos = GetLedgeGrabHit().point;
         if (!grounded && shouldLedgeGrab) {
             // Grab Ledge
-
+            jumpToLedge = false;
+            mount = false;
+            jumpToLedge = false;
+            jumpInput = false;
+            jumping = false;
         }
     }
 
@@ -178,13 +188,26 @@ public class Player : MonoBehaviour
 
 
         RaycastHit forwardGroundPoint = GetForwardGroundHit();
-        if ((forwardGroundPoint.point.y <= transform.position.y - forwardGroundDistanceToJump)) {
+        if ((forwardGroundPoint.point.y <= transform.position.y - forwardGroundDistanceToJump) && moveDirection.magnitude > 0.8f) {
             if(Flatness(forwardGroundPoint.normal) >= 0.1f)
                 jumpInput = true;
         }
     }
 
-    // --------------------------------------------
+    private void HandleVaulting() {
+        if (jumpToLedge){
+
+            return;
+        }
+        else if (mount){
+
+            return;
+        }
+        else if (hop) {
+            transform.position = vaultPos;
+            return;
+        }
+    }
 
     private void UpdateGroundNormalTransform() {
         Vector3 groundNormal = GetGroundHit().point != Vector3.zero ? GetGroundHit().normal : Vector3.up;
@@ -216,18 +239,6 @@ public class Player : MonoBehaviour
         groundNormalTransform.position = GetGroundHit().point;
 
         if(showGroundNormal) Debug.DrawRay(groundNormalTransform.position, groundNormal, Color.magenta, 5f);
-    }
-
-    public void CheckForJumpToLedgeGrab() {
-        Vector3 ledgePos = GetVaultHit(jumpToLedgeGrabHeight, ref canJumpToLedgeGrab).point;
-    }
-
-    public void CheckForHop() {
-        Vector3 ledgePos = GetVaultHit(hopHeight, ref canHop).point;
-    }
-
-    public void CheckForMount() {
-        Vector3 ledgePos = GetVaultHit(mountHeight, ref canMount).point;
     }
 
     public void CheckGrounding() {
@@ -267,6 +278,15 @@ public class Player : MonoBehaviour
 
         if (showGroundCheckRay) Debug.DrawRay(castPoint, Vector3.down * stepHeight);
 
+    }
+
+    public void CheckVaulting() {
+        Vector3 ledgePos = GetVaultHit(100, ref shouldVault).point;
+        hop = ledgePos.y > (transform.position + Vector3.up * (hopHeight)).y;
+        mount = ledgePos.y > (transform.position + Vector3.up * (mountHeight)).y;
+        jumpToLedge = ledgePos.y > (transform.position + Vector3.up * (jumpToLedgeGrabHeight)).y;
+
+        vaultPos = ledgePos;
     }
 
     public bool IsGroundFlat(Vector3 checkPos) {
@@ -334,7 +354,7 @@ public class Player : MonoBehaviour
     public RaycastHit GetVaultHit(float vaultHeight, ref bool canDo) {
         RaycastHit hit;
         Vector3 castPoint = transform.position + (Vector3.up * vaultHeight) + (transform.forward * widthCheck);
-        bool didHit = Physics.Raycast(new Ray(castPoint, Vector3.down), out hit, 1f, gameObject.layer);
+        bool didHit = Physics.Raycast(new Ray(castPoint, Vector3.down), out hit, 1000f, gameObject.layer);
         Vector3 normal = hit.normal;
         float flatness = Vector3.Dot(Vector3.up, normal);
         canDo = flatness >= 0.95 && didHit;
