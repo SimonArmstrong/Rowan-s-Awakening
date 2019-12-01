@@ -98,6 +98,7 @@ MonoBehaviour:
   widthCheck: 0.32
   animationBlendSmoothing: 20
   locomotionState: 0
+  vaultPos: {x: 0, y: 0, z: 0}
   ledgeGrabHeight: 1.55
   jumpToLedgeGrabHeight: 1.85
   mountHeight: 1.35
@@ -118,11 +119,17 @@ MonoBehaviour:
   forwardGroundNormalAngleDebugTextbox: {fileID: 0}
   headHeightTransform: {fileID: 3407204877756149311}
   shouldLedgeGrab: 0
+  shouldVault: 0
   canJumpToLedgeGrab: 0
   canMount: 0
   canHop: 0
   jumping: 0
+  vaulting: 0
   jumpInput: 0
+  hop: 0
+  mount: 0
+  jumpToLedge: 0
+  grabLedge: 0
   showGroundNormal: 0
   showGroundCheckRay: 1
   showInput: 1
@@ -205,6 +212,27 @@ Transform:
   m_Father: {fileID: 8669855838809396666}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5479257971800780119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6658923749367208597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a1dc5794ccd84b45b53100105388770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 340133680912762364}
+  headTransform: {fileID: 0}
+  leftFootTransform: {fileID: 0}
+  rightFootTransform: {fileID: 0}
+  leftHandTransform: {fileID: 0}
+  rightHandTransform: {fileID: 0}
+  stepHeight: 0.4
+  feetOffset: 0.1
+  useIK: 0
 --- !u!1 &7018759931646499844
 GameObject:
   m_ObjectHideFlags: 0
@@ -696,9 +724,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8dfc397482481d249bbc4a995a9bcc93, type: 3}
+--- !u!1 &6658923749367208597 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 8dfc397482481d249bbc4a995a9bcc93,
+    type: 3}
+  m_PrefabInstance: {fileID: 3407204878659781532}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7652290894773037190 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 8dfc397482481d249bbc4a995a9bcc93,
+    type: 3}
+  m_PrefabInstance: {fileID: 3407204878659781532}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &340133680912762364 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: -6057140222963153312, guid: 8dfc397482481d249bbc4a995a9bcc93,
     type: 3}
   m_PrefabInstance: {fileID: 3407204878659781532}
   m_PrefabAsset: {fileID: 0}
