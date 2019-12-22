@@ -6089,8 +6089,8 @@ Terrain:
   m_TreeDistance: 5000
   m_TreeBillboardDistance: 50
   m_TreeCrossFadeLength: 5
-  m_TreeMaximumFullLODCount: 0
-  m_DetailObjectDistance: 75
+  m_TreeMaximumFullLODCount: 6799
+  m_DetailObjectDistance: 64
   m_DetailObjectDensity: 1
   m_HeightmapPixelError: 5
   m_SplatMapDistance: 1000
@@ -6100,7 +6100,7 @@ Terrain:
   m_DrawInstanced: 0
   m_DrawTreesAndFoliage: 1
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 2100000, guid: 34c16dac6ed053a4c972e272e6157def, type: 2}
+  m_MaterialTemplate: {fileID: 2100000, guid: 79617f9eaa5def34e90c1d6cb26a38af, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -25984,6 +25984,55 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 621022367}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &622343364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59b6606ef2548734bb6d11b9d160bc7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  rotation:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 360
+  skyIntensityMode:
+    m_OverrideState: 0
+    m_Value: 0
+  exposure:
+    m_OverrideState: 0
+    m_Value: 0
+  multiplier:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+  upperHemisphereLuxValue:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+  desiredLuxValue:
+    m_OverrideState: 0
+    m_Value: 20000
+  updateMode:
+    m_OverrideState: 0
+    m_Value: 0
+  updatePeriod:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+  includeSunInBaking:
+    m_OverrideState: 0
+    m_Value: 0
+  hdriSky:
+    m_OverrideState: 0
+    m_Value: {fileID: 8900000, guid: d4a922c48da52f1419ccaa9db1679c32, type: 3}
 --- !u!1 &622630981
 GameObject:
   m_ObjectHideFlags: 0
@@ -57266,7 +57315,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1326234161}
   m_LocalRotation: {x: -0, y: -0.70710677, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 213.8, y: 130.306, z: 342.4}
+  m_LocalPosition: {x: 213.8, y: 130.265, z: 342.4}
   m_LocalScale: {x: 0.65586, y: 0.65586, z: 0.65586}
   m_Children:
   - {fileID: 893073485}
@@ -58980,7 +59029,7 @@ PrefabInstance:
     - target: {fileID: 1722842114783863326, guid: 4ad9b0d90b2bcca44a1114b03591a00a,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0010646122
+      value: -0.0010645993
       objectReference: {fileID: 0}
     - target: {fileID: 1722842114783863326, guid: 4ad9b0d90b2bcca44a1114b03591a00a,
         type: 3}
@@ -58995,7 +59044,7 @@ PrefabInstance:
     - target: {fileID: 1722842114783863326, guid: 4ad9b0d90b2bcca44a1114b03591a00a,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.0061861975
+      value: -0.0061861216
       objectReference: {fileID: 0}
     - target: {fileID: 1722842114783863326, guid: 4ad9b0d90b2bcca44a1114b03591a00a,
         type: 3}
@@ -59040,7 +59089,7 @@ PrefabInstance:
     - target: {fileID: 1722842114626517991, guid: 4ad9b0d90b2bcca44a1114b03591a00a,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0010641967
+      value: -0.0010641902
       objectReference: {fileID: 0}
     - target: {fileID: 1722842114626517991, guid: 4ad9b0d90b2bcca44a1114b03591a00a,
         type: 3}
@@ -59055,7 +59104,7 @@ PrefabInstance:
     - target: {fileID: 1722842114626517991, guid: 4ad9b0d90b2bcca44a1114b03591a00a,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.006186107
+      value: -0.0061860695
       objectReference: {fileID: 0}
     - target: {fileID: 1722842112879208490, guid: 4ad9b0d90b2bcca44a1114b03591a00a,
         type: 3}
@@ -74271,7 +74320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Profile: {fileID: 11400000, guid: 2957e18e27dd9234f958e8e731fbde1b, type: 2}
   m_StaticLightingSkyUniqueID: 1
-  m_SkySettings: {fileID: 1939768311}
+  m_SkySettings: {fileID: 622343364}
   m_SkySettingsFromProfile: {fileID: 367241809276944997, guid: 2957e18e27dd9234f958e8e731fbde1b,
     type: 2}
 --- !u!114 &1741251768
@@ -81241,55 +81290,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1933070889}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1939768311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59b6606ef2548734bb6d11b9d160bc7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  active: 1
-  m_AdvancedMode: 0
-  rotation:
-    m_OverrideState: 0
-    m_Value: 0
-    min: 0
-    max: 360
-  skyIntensityMode:
-    m_OverrideState: 0
-    m_Value: 0
-  exposure:
-    m_OverrideState: 0
-    m_Value: 0
-  multiplier:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0
-  upperHemisphereLuxValue:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0
-  desiredLuxValue:
-    m_OverrideState: 0
-    m_Value: 20000
-  updateMode:
-    m_OverrideState: 0
-    m_Value: 0
-  updatePeriod:
-    m_OverrideState: 0
-    m_Value: 0
-    min: 0
-  includeSunInBaking:
-    m_OverrideState: 0
-    m_Value: 0
-  hdriSky:
-    m_OverrideState: 0
-    m_Value: {fileID: 8900000, guid: d4a922c48da52f1419ccaa9db1679c32, type: 3}
 --- !u!1 &1940186114
 GameObject:
   m_ObjectHideFlags: 0
