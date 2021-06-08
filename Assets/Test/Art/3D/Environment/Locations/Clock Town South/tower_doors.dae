@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 2.76.0 commit date:2015-09-17, commit time:14:48, hash:c586e30</authoring_tool>
+    </contributor>
+    <created>2017-01-20T18:44:15</created>
+    <modified>2017-01-20T18:44:15</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_images>
+    <image id="tk_door_02_0_png" name="tk_door_02_0_png">
+      <init_from>tk_door_02_0.png</init_from>
+    </image>
+    <image id="tk_door_01_0_png" name="tk_door_01_0_png">
+      <init_from>tk_door_01_0.png</init_from>
+    </image>
+  </library_images>
+  <library_effects>
+    <effect id="material-022AAEB1-effect">
+      <profile_COMMON>
+        <newparam sid="tk_door_02_0_png-surface">
+          <surface type="2D">
+            <init_from>tk_door_02_0_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="tk_door_02_0_png-sampler">
+          <sampler2D>
+            <source>tk_door_02_0_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="tk_door_02_0_png-sampler" texcoord="a"/>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="material-00C959CB-effect">
+      <profile_COMMON>
+        <newparam sid="tk_door_01_0_png-surface">
+          <surface type="2D">
+            <init_from>tk_door_01_0_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="tk_door_01_0_png-sampler">
+          <sampler2D>
+            <source>tk_door_01_0_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="tk_door_01_0_png-sampler" texcoord="a"/>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_materials>
+    <material id="material-022AAEB1-material" name="material-022AAEB1">
+      <instance_effect url="#material-022AAEB1-effect"/>
+    </material>
+    <material id="material-00C959CB-material" name="material-00C959CB">
+      <instance_effect url="#material-00C959CB-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="geom-03802439-mesh" name="geom-03802439">
+      <mesh>
+        <source id="geom-03802439-mesh-positions">
+          <float_array id="geom-03802439-mesh-positions-array" count="84">0 700 100 800 700 100 0 1400 100 800 1400 100 0 1400 100 800 1400 100 0 1400 -100 800 1400 -100 0 700 -100 800 700 -100 0 0 -100 800 0 -100 800 700 100 800 700 -100 800 1400 100 800 1400 -100 0 0 -100 0 0 100 0 700 -100 0 700 100 0 0 100 800 0 100 0 1400 -100 0 1400 100 800 0 100 800 0 -100 0 1400 -100 800 1400 -100</float_array>
+          <technique_common>
+            <accessor source="#geom-03802439-mesh-positions-array" count="28" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-03802439-mesh-normals">
+          <float_array id="geom-03802439-mesh-normals-array" count="15">0 0 1 0 0 -1 1 0 0 -1 0 0 0 1 0</float_array>
+          <technique_common>
+            <accessor source="#geom-03802439-mesh-normals-array" count="5" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-03802439-mesh-map-0">
+          <float_array id="geom-03802439-mesh-map-0-array" count="108">0.00999999 0.5 0.58 0.5 0.00999999 0.99 0.00999999 0.5 0.58 0.00999999 0.58 0.5 0.00999999 0.5 0.00999999 0.00999999 0.58 0.00999999 0.00999999 0.99 0.58 0.5 0.58 0.99 0.00999999 0.5 0.58 0.5 0.00999999 0.00999999 0.00999999 0.5 0.58 0.99 0.58 0.5 0.00999999 0.5 0.00999999 0.99 0.58 0.99 0.00999999 0.00999999 0.58 0.5 0.58 0.00999999 0.58 0.5 0.74 0.5 0.58 0.99 0.58 0.5 0.74 0.00999999 0.74 0.5 0.58 0.5 0.58 0.00999999 0.74 0.00999999 0.58 0.99 0.74 0.5 0.74 0.99 0.74 0.5 0.74 0.00999999 0.58 0.00999999 0.74 0.5 0.58 0.00999999 0.58 0.5 0.74 0.5 0.58 0.5 0.74 0.99 0.58 0.5 0.58 0.99 0.74 0.99 0.76 0.99 0.92 0.46 0.76 0.46 0.76 0.99 0.92 0.99 0.92 0.46</float_array>
+          <technique_common>
+            <accessor source="#geom-03802439-mesh-map-0-array" count="54" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-03802439-mesh-colors-geom-03802439-colors" name="geom-03802439-colors">
+          <float_array id="geom-03802439-mesh-colors-geom-03802439-colors-array" count="162">0.9607843 0.9607843 0.9607843 0.5019608 0.5019608 0.5019608 0.2196078 0.2196078 0.2196078 0.9607843 0.9607843 0.9607843 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.9607843 0.9607843 0.9607843 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.2196078 0.2196078 0.2196078 0.5019608 0.5019608 0.5019608 0.2196078 0.2196078 0.2196078 0.8509804 0.8509804 0.8509804 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.8509804 0.8509804 0.8509804 0.2196078 0.2196078 0.2196078 0.5019608 0.5019608 0.5019608 0.8509804 0.8509804 0.8509804 0.2196078 0.2196078 0.2196078 0.2196078 0.2196078 0.2196078 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608</float_array>
+          <technique_common>
+            <accessor source="#geom-03802439-mesh-colors-geom-03802439-colors-array" count="54" stride="3">
+              <param name="R" type="float"/>
+              <param name="G" type="float"/>
+              <param name="B" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="geom-03802439-mesh-vertices">
+          <input semantic="POSITION" source="#geom-03802439-mesh-positions"/>
+        </vertices>
+        <polylist material="material-022AAEB1-material" count="18">
+          <input semantic="VERTEX" source="#geom-03802439-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#geom-03802439-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#geom-03802439-mesh-map-0" offset="2" set="0"/>
+          <input semantic="COLOR" source="#geom-03802439-mesh-colors-geom-03802439-colors" offset="3" set="0"/>
+          <vcount>3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 </vcount>
+          <p>0 0 0 0 1 0 1 1 2 0 2 2 0 0 3 3 21 0 4 4 1 0 5 5 0 0 6 6 20 0 7 7 21 0 8 8 2 0 9 9 1 0 10 10 3 0 11 11 8 1 12 12 9 1 13 13 10 1 14 14 8 1 15 15 27 1 16 16 9 1 17 17 8 1 18 18 26 1 19 19 27 1 20 20 10 1 21 21 9 1 22 22 11 1 23 23 12 2 24 24 13 2 25 25 14 2 26 26 12 2 27 27 25 2 28 28 13 2 29 29 12 2 30 30 24 2 31 31 25 2 32 32 14 2 33 33 13 2 34 34 15 2 35 35 18 3 36 36 16 3 37 37 17 3 38 38 18 3 39 39 17 3 40 40 19 3 41 41 18 3 42 42 19 3 43 43 22 3 44 44 19 3 45 45 23 3 46 46 22 3 47 47 5 4 48 48 6 4 49 49 4 4 50 50 5 4 51 51 7 4 52 52 6 4 53 53</p>
+        </polylist>
+      </mesh>
+    </geometry>
+    <geometry id="geom-0314282B-mesh" name="geom-0314282B">
+      <mesh>
+        <source id="geom-0314282B-mesh-positions">
+          <float_array id="geom-0314282B-mesh-positions-array" count="84">-800 700 100 0 700 100 -800 1400 100 0 1400 100 -800 1400 100 0 1400 100 -800 1400 -100 0 1400 -100 -800 700 -100 0 700 -100 -800 0 -100 0 0 -100 0 700 100 0 700 -100 0 1400 100 0 1400 -100 -800 0 -100 -800 0 100 -800 700 -100 -800 700 100 -800 0 100 0 0 100 -800 1400 -100 -800 1400 100 0 0 100 0 0 -100 -800 1400 -100 0 1400 -100</float_array>
+          <technique_common>
+            <accessor source="#geom-0314282B-mesh-positions-array" count="28" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-0314282B-mesh-normals">
+          <float_array id="geom-0314282B-mesh-normals-array" count="15">0 0 1 0 0 -1 1 0 0 -1 0 0 0 1 0</float_array>
+          <technique_common>
+            <accessor source="#geom-0314282B-mesh-normals-array" count="5" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-0314282B-mesh-map-0">
+          <float_array id="geom-0314282B-mesh-map-0-array" count="108">0.58 0.5 0.00999999 0.5 0.58 0.99 0.58 0.5 0.00999999 0.00999999 0.00999999 0.5 0.58 0.5 0.58 0.00999999 0.00999999 0.00999999 0.58 0.99 0.00999999 0.5 0.00999999 0.99 0.58 0.5 0.00999999 0.5 0.58 0.00999999 0.58 0.5 0.00999999 0.99 0.00999999 0.5 0.58 0.5 0.58 0.99 0.00999999 0.99 0.58 0.00999999 0.00999999 0.5 0.00999999 0.00999999 0.58 0.5 0.74 0.5 0.58 0.99 0.58 0.5 0.74 0.00999999 0.74 0.5 0.58 0.5 0.58 0.00999999 0.74 0.00999999 0.58 0.99 0.74 0.5 0.74 0.99 0.58 0.5 0.58 0.00999999 0.74 0.00999999 0.58 0.5 0.74 0.00999999 0.74 0.5 0.58 0.5 0.74 0.5 0.58 0.99 0.74 0.5 0.74 0.99 0.58 0.99 0.76 0.46 0.93 0.99 0.76 0.99 0.76 0.46 0.93 0.46 0.93 0.99</float_array>
+          <technique_common>
+            <accessor source="#geom-0314282B-mesh-map-0-array" count="54" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-0314282B-mesh-colors-geom-0314282B-colors" name="geom-0314282B-colors">
+          <float_array id="geom-0314282B-mesh-colors-geom-0314282B-colors-array" count="162">0.5019608 0.5019608 0.5019608 0.9607843 0.9607843 0.9607843 0.2196078 0.2196078 0.2196078 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.9607843 0.9607843 0.9607843 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.2196078 0.2196078 0.2196078 0.9607843 0.9607843 0.9607843 0.2196078 0.2196078 0.2196078 0.5019608 0.5019608 0.5019608 0.8509804 0.8509804 0.8509804 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.2196078 0.2196078 0.2196078 0.8509804 0.8509804 0.8509804 0.5019608 0.5019608 0.5019608 0.2196078 0.2196078 0.2196078 0.2196078 0.2196078 0.2196078 0.5019608 0.5019608 0.5019608 0.8509804 0.8509804 0.8509804 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608</float_array>
+          <technique_common>
+            <accessor source="#geom-0314282B-mesh-colors-geom-0314282B-colors-array" count="54" stride="3">
+              <param name="R" type="float"/>
+              <param name="G" type="float"/>
+              <param name="B" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="geom-0314282B-mesh-vertices">
+          <input semantic="POSITION" source="#geom-0314282B-mesh-positions"/>
+        </vertices>
+        <polylist material="material-00C959CB-material" count="18">
+          <input semantic="VERTEX" source="#geom-0314282B-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#geom-0314282B-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#geom-0314282B-mesh-map-0" offset="2" set="0"/>
+          <input semantic="COLOR" source="#geom-0314282B-mesh-colors-geom-0314282B-colors" offset="3" set="0"/>
+          <vcount>3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 </vcount>
+          <p>0 0 0 0 1 0 1 1 2 0 2 2 0 0 3 3 21 0 4 4 1 0 5 5 0 0 6 6 20 0 7 7 21 0 8 8 2 0 9 9 1 0 10 10 3 0 11 11 8 1 12 12 9 1 13 13 10 1 14 14 8 1 15 15 27 1 16 16 9 1 17 17 8 1 18 18 26 1 19 19 27 1 20 20 10 1 21 21 9 1 22 22 11 1 23 23 12 2 24 24 13 2 25 25 14 2 26 26 12 2 27 27 25 2 28 28 13 2 29 29 12 2 30 30 24 2 31 31 25 2 32 32 14 2 33 33 13 2 34 34 15 2 35 35 18 3 36 36 16 3 37 37 17 3 38 38 18 3 39 39 17 3 40 40 19 3 41 41 18 3 42 42 19 3 43 43 22 3 44 44 19 3 45 45 23 3 46 46 22 3 47 47 5 4 48 48 6 4 49 49 4 4 50 50 5 4 51 51 7 4 52 52 6 4 53 53</p>
+        </polylist>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_controllers/>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="tower_door_R" name="tower_door_R" type="NODE">
+        <matrix sid="transform">0.001 0 0 -3.6 0 -1.62921e-10 -0.001 7.91 0 0.001 -1.62921e-10 4.47035e-8 0 0 0 1</matrix>
+        <instance_geometry url="#geom-03802439-mesh" name="tower_door_R">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="material-022AAEB1-material" target="#material-022AAEB1-material">
+                <bind_vertex_input semantic="a" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="tower_door_L" name="tower_door_L" type="NODE">
+        <matrix sid="transform">0.001 0 0 -2 0 -1.62921e-10 -0.001 7.91 0 0.001 -1.62921e-10 4.47035e-8 0 0 0 1</matrix>
+        <instance_geometry url="#geom-0314282B-mesh" name="tower_door_L">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="material-00C959CB-material" target="#material-00C959CB-material">
+                <bind_vertex_input semantic="a" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>

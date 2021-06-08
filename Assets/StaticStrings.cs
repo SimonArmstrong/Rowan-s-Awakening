@@ -16,4 +16,7 @@ public static class StaticStrings
     public static string anim_vertical = "vertical";
     public static string anim_moveSpeed = "moveSpeed";
     public static string anim_lockon = "lockon";
+    public static string anim_jump = "Jump";
+    public static string anim_pullUp = "pullUp";
+    public static string anim_hanging = "hanging";
 }

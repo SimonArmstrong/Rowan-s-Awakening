@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 2.76.0 commit date:2015-09-17, commit time:14:48, hash:c586e30</authoring_tool>
+    </contributor>
+    <created>2017-01-20T18:51:31</created>
+    <modified>2017-01-20T18:51:31</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_images>
+    <image id="kibako_model_01_0_png" name="kibako_model_01_0_png">
+      <init_from>kibako_model_01_0.png</init_from>
+    </image>
+  </library_images>
+  <library_effects>
+    <effect id="material-01648DFD-effect">
+      <profile_COMMON>
+        <newparam sid="kibako_model_01_0_png-surface">
+          <surface type="2D">
+            <init_from>kibako_model_01_0_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="kibako_model_01_0_png-sampler">
+          <sampler2D>
+            <source>kibako_model_01_0_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="kibako_model_01_0_png-sampler" texcoord="geom-0088FDE6-texcoord"/>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_materials>
+    <material id="material-01648DFD-material" name="material-01648DFD">
+      <instance_effect url="#material-01648DFD-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="geom-0088FDE6-mesh" name="geom-0088FDE6">
+      <mesh>
+        <source id="geom-0088FDE6-mesh-positions">
+          <float_array id="geom-0088FDE6-mesh-positions-array" count="180">-100 0 100 -78.62 0 78.62 100 0 100 78.62 0 78.62 100 200 -100 100 200 100 100 0 -100 -100 0 100 -100 200 100 -100 200 -100 100 200 100 -100 200 100 100 0 100 100 200 -100 -100 200 -100 -100 200 100 100 200 -100 -100 0 -100 -100 200 -100 -100 0 100 100 0 -100 100 200 100 100 0 100 100 0 -100 -100 0 100 -100 200 -100 -100 0 -100 100 200 -100 -100 200 100 100 200 100 78.62 0 -78.62 -78.62 0 -78.62 100 0 -100 -100 0 -100 -100 0 100 -78.62 0 78.62 100 0 -100 78.62 0 -78.62 -78.62 185.16 78.62 -78.62 185.16 -78.62 78.62 185.16 -78.62 78.62 185.16 -78.62 78.62 185.16 78.62 -78.62 185.16 78.62 -78.62 185.16 78.62 -78.62 0 78.62 -78.62 185.16 -78.62 -78.62 0 -78.62 78.62 185.16 -78.62 78.62 0 -78.62 78.62 185.16 78.62 78.62 0 78.62 -78.62 185.16 -78.62 -78.62 0 -78.62 78.62 185.16 -78.62 78.62 0 -78.62 78.62 185.16 78.62 78.62 0 78.62 -78.62 185.16 78.62 -78.62 0 78.62</float_array>
+          <technique_common>
+            <accessor source="#geom-0088FDE6-mesh-positions-array" count="60" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-0088FDE6-mesh-normals">
+          <float_array id="geom-0088FDE6-mesh-normals-array" count="18">0 -1 0 0 0 1 0 0 -1 1 0 0 -1 0 0 0 1 0</float_array>
+          <technique_common>
+            <accessor source="#geom-0088FDE6-mesh-normals-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-0088FDE6-mesh-map-0">
+          <float_array id="geom-0088FDE6-mesh-map-0-array" count="168">0.01999998 0.51 0.94 0.51 0.84 0.55 0.01999998 0.51 0.84 0.55 0.11 0.55 0.01999998 0.51 0.11 0.55 0.01999998 0.97 0.11 0.55 0.11 0.92 0.01999998 0.97 0.11 0.55 0.94 0.51 0.84 0.55 0.11 0.55 0.01999998 0.51 0.94 0.51 0.11 0.55 0.11 0.92 0.01999998 0.51 0.11 0.92 0.01999998 0.97 0.01999998 0.51 0.01999998 0.49 0.98 0.00999999 0.98 0.49 0.01999998 0.49 0.01999998 0.00999999 0.98 0.00999999 0.01999998 0.49 0.98 0.00999999 0.98 0.49 0.01999998 0.49 0.01999998 0.00999999 0.98 0.00999999 0.87 0.00999999 0.1299999 0.45 0.87 0.45 0.87 0.00999999 0.1299999 0.00999999 0.1299999 0.45 0.87 0.00999999 0.1299999 0.45 0.87 0.45 0.87 0.00999999 0.1299999 0.00999999 0.1299999 0.45 0.87 0.00999999 0.1299999 0.45 0.87 0.45 0.87 0.00999999 0.1299999 0.00999999 0.1299999 0.45 0.87 0.00999999 0.1299999 0.45 0.87 0.45 0.87 0.00999999 0.1299999 0.00999999 0.1299999 0.45 0.98 0.99 0.01999998 0.99 0.98 0.51 0.98 0.51 0.98 0.99 0.01999998 0.99 0.01999998 0.97 0.01999998 0.51 0.94 0.51 0.98 0.00999999 0.01999998 0.49 0.01999998 0.00999999 0.98 0.00999999 0.01999998 0.49 0.01999998 0.00999999 0.94 0.51 0.01999998 0.97 0.01999998 0.51 0.84 0.55 0.11 0.56 0.11 0.92 0.84 0.55 0.11 0.56 0.11 0.92</float_array>
+          <technique_common>
+            <accessor source="#geom-0088FDE6-mesh-map-0-array" count="84" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-0088FDE6-mesh-colors-geom-0088FDE6-colors" name="geom-0088FDE6-colors">
+          <float_array id="geom-0088FDE6-mesh-colors-geom-0088FDE6-colors-array" count="252">0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.07843136 0.2980392 0.2980392 0.2980392 0.2980392 0.2980392 0.2980392 0.2980392 0.2980392 0.2980392 0.2980392 0.2980392 0.2980392 0.2980392 0.2980392 0.2980392 0.2980392 0.2980392 0.2980392 0.2980392 0.2980392 0.2980392 0.2980392 0.2980392 0.2980392 0.2980392 0.2980392 0.2980392 0.2980392 0.2980392 0.2980392 0.2980392 0.2980392 0.2980392 0.2980392 0.2980392 0.2980392 0.2117647 0.2117647 0.2117647 0.03921568 0.03921568 0.03921568 0.03921568 0.03921568 0.03921568 0.2117647 0.2117647 0.2117647 0.2117647 0.2117647 0.2117647 0.03921568 0.03921568 0.03921568 0.2117647 0.2117647 0.2117647 0.03921568 0.03921568 0.03921568 0.03921568 0.03921568 0.03921568 0.2117647 0.2117647 0.2117647 0.2117647 0.2117647 0.2117647 0.03921568 0.03921568 0.03921568 0.1607843 0.1607843 0.1607843 0.03921568 0.03921568 0.03921568 0.03921568 0.03921568 0.03921568 0.1607843 0.1607843 0.1607843 0.1607843 0.1607843 0.1607843 0.03921568 0.03921568 0.03921568 0.1607843 0.1607843 0.1607843 0.03921568 0.03921568 0.03921568 0.03921568 0.03921568 0.03921568 0.1607843 0.1607843 0.1607843 0.1607843 0.1607843 0.1607843 0.03921568 0.03921568 0.03921568 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.03921568 0.03921568 0.03921568 0.03921568 0.03921568 0.03921568 0.03921568 0.03921568 0.03921568 0.03921568 0.03921568 0.03921568 0.03921568 0.03921568 0.03921568 0.03921568 0.03921568 0.03921568</float_array>
+          <technique_common>
+            <accessor source="#geom-0088FDE6-mesh-colors-geom-0088FDE6-colors-array" count="84" stride="3">
+              <param name="R" type="float"/>
+              <param name="G" type="float"/>
+              <param name="B" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="geom-0088FDE6-mesh-vertices">
+          <input semantic="POSITION" source="#geom-0088FDE6-mesh-positions"/>
+        </vertices>
+        <polylist material="material-01648DFD-material" count="28">
+          <input semantic="VERTEX" source="#geom-0088FDE6-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#geom-0088FDE6-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#geom-0088FDE6-mesh-map-0" offset="2" set="0"/>
+          <input semantic="COLOR" source="#geom-0088FDE6-mesh-colors-geom-0088FDE6-colors" offset="3" set="0"/>
+          <vcount>3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 </vcount>
+          <p>2 0 0 0 0 0 1 1 1 0 2 2 2 0 3 3 1 0 4 4 3 0 5 5 2 0 6 6 3 0 7 7 36 0 8 8 3 0 9 9 37 0 10 10 36 0 11 11 31 0 12 12 32 0 13 13 30 0 14 14 31 0 15 15 33 0 16 16 32 0 17 17 31 0 18 18 35 0 19 19 33 0 20 20 35 0 21 21 34 0 22 22 33 0 23 23 11 1 24 24 12 1 25 25 10 1 26 26 11 1 27 27 19 1 28 28 12 1 29 29 16 2 30 30 17 2 31 31 18 2 32 32 16 2 33 33 23 2 34 34 17 2 35 35 45 3 36 36 46 3 37 37 44 3 38 38 45 3 39 39 47 3 40 40 46 3 41 41 49 4 42 42 50 4 43 43 48 4 44 44 49 4 45 45 51 4 46 46 50 4 47 47 53 1 48 48 54 1 49 49 52 1 50 50 53 1 51 51 55 1 52 52 54 1 53 53 57 2 54 54 58 2 55 55 56 2 56 56 57 2 57 57 59 2 58 58 58 2 59 59 4 3 60 60 5 3 61 61 6 3 62 62 7 4 63 63 8 4 64 64 9 4 65 65 13 5 66 66 14 5 67 67 15 5 68 68 20 3 69 69 21 3 70 70 22 3 71 71 24 4 72 72 25 4 73 73 26 4 74 74 27 5 75 75 28 5 76 76 29 5 77 77 38 0 78 78 39 0 79 79 40 0 80 80 41 0 81 81 42 0 82 82 43 0 83 83</p>
+        </polylist>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_controllers/>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="box" name="box" type="NODE">
+        <matrix sid="transform">0.01 0 0 0 0 -1.62921e-9 -0.01 0 0 0.01 -1.62921e-9 0 0 0 0 1</matrix>
+        <instance_geometry url="#geom-0088FDE6-mesh" name="box">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="material-01648DFD-material" target="#material-01648DFD-material">
+                <bind_vertex_input semantic="geom-0088FDE6-texcoord" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>

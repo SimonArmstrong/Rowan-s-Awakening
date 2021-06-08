@@ -14,12 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   profile:
     scatteringDistance: {r: 1.7207954, g: 1.7207954, b: 1.7207954, a: 1}
-    transmissionTint: {r: 1, g: 1, b: 1, a: 1}
+    transmissionTint: {r: 1, g: 0.84843314, b: 0.8160377, a: 1}
     texturingMode: 0
     transmissionMode: 1
-    thicknessRemap: {x: 0, y: 7.8169594}
-    worldScale: 1
+    thicknessRemap: {x: 0, y: 0}
+    worldScale: 0.32
     ior: 1.5
     hash: 1078296403
   m_Version: 1
-  profiles: []

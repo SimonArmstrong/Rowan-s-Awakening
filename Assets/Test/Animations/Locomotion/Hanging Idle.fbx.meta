@@ -1,14 +1,14 @@
 fileFormatVersion: 2
 guid: dc87b81d53e22ed468997343f76606ce
 ModelImporter:
-  serializedVersion: 26
+  serializedVersion: 19300
   internalIDToNameTable:
   - first:
       74: -203655887218126122
     second: Hanging
   externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -21,8 +21,8 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
       copied configuration does not match position in animation file:\n\t'mixamorig:LeftUpLeg'
-      : position error = 15872.208008 mm\n\t'mixamorig:LeftLeg' : position error =
-      66407.093750 mm\n\t'mixamorig:LeftFoot' : position error = 66595.312500 mm\n\t'mixamorig:LeftToeBase'
+      : position error = 15872.208008 mm\n\t'mixamorig:LeftLeg' : position error
+      = 66407.093750 mm\n\t'mixamorig:LeftFoot' : position error = 66595.312500 mm\n\t'mixamorig:LeftToeBase'
       : position error = 20683.292969 mm\n\t'mixamorig:RightUpLeg' : position error
       = 15872.127930 mm\n\t'mixamorig:RightLeg' : position error = 66407.171875 mm\n\t'mixamorig:RightFoot'
       : position error = 66595.125000 mm\n\t'mixamorig:RightToeBase' : position error
@@ -108,7 +108,6 @@ ModelImporter:
     normalSmoothingSource: 0
   referencedClips: []
   importAnimation: 1
-  copyAvatar: 1
   humanDescription:
     serializedVersion: 3
     human:
@@ -900,8 +899,10 @@ ModelImporter:
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 8dfc397482481d249bbc4a995a9bcc93,
     type: 3}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
+  avatarSetup: 2
   additionalBone: 0
   userData: 
   assetBundleName: 

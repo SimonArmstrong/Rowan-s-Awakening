@@ -20,4 +20,12 @@ public static class GameEngine {
             Debug.DrawRay(position, dirs[i] * radius, Color.blue);
         }
     }
+
+    public static void DrawZPlaneCrossGizmo(Vector3 position, float radius, Color c) {
+        Vector3[] dirs = { Vector3.forward, Vector3.back, Vector3.left, Vector3.right };
+        for (int i = 0; i < 4; i++)
+        {
+            Debug.DrawRay(position, dirs[i] * radius, c);
+        }
+    }
 }

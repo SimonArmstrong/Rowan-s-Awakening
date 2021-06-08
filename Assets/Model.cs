@@ -17,21 +17,33 @@ public class Model : MonoBehaviour
 
     public bool useIK = false;
 
+    public SoundFont footstepSounds;
+
+    public Vector3 lookPos;
+
     public void Init() {
-        leftFootTransform = anim.GetBoneTransform(HumanBodyBones.LeftFoot);
-        rightFootTransform = anim.GetBoneTransform(HumanBodyBones.RightFoot);
+        if(anim == null) anim = GetComponent<Animator>();
+        if(leftFootTransform == null) leftFootTransform = anim.GetBoneTransform(HumanBodyBones.LeftFoot);
+        if(rightFootTransform == null) rightFootTransform = anim.GetBoneTransform(HumanBodyBones.RightFoot);
+        if(headTransform == null) headTransform = anim.GetBoneTransform(HumanBodyBones.Head);
     }
 
     private void OnAnimatorIK(int layerIndex) {
         RaycastHit left, right;
-        Physics.Raycast(new Ray(leftFootTransform.position + (Vector3.up * stepHeight), Vector3.down), out left, stepHeight * 2);
+        Physics.Raycast(new Ray(leftFootTransform.position  + (Vector3.up * stepHeight), Vector3.down), out left,  stepHeight * 2);
         Physics.Raycast(new Ray(rightFootTransform.position + (Vector3.up * stepHeight), Vector3.down), out right, stepHeight * 2);
 
-        anim.SetIKPosition(AvatarIKGoal.LeftFoot, left.point + (Vector3.up * feetOffset));
-        anim.SetIKPosition(AvatarIKGoal.RightFoot, right.point + (Vector3.up * feetOffset));
-        anim.SetIKPositionWeight(AvatarIKGoal.LeftFoot, useIK ? 1 : 0);
-        anim.SetIKPositionWeight(AvatarIKGoal.RightFoot, useIK ? 1 : 0);
+        //anim.SetIKPosition(AvatarIKGoal.LeftFoot,  left.point   + (Vector3.up * feetOffset));
+        //anim.SetIKPosition(AvatarIKGoal.RightFoot, right.point + (Vector3.up * feetOffset));
+        //anim.SetIKPositionWeight(AvatarIKGoal.LeftFoot,  useIK ? 1 : 0);
+        //anim.SetIKPositionWeight(AvatarIKGoal.RightFoot, useIK ? 1 : 0);
+    }
 
-        //headTransform.LookAt(new Vector3(lookPos.x, lookPos.y + headHeightTransform.localPosition.y, lookPos.z));
+    private void OnFootstep(){
+        SoundManager.instance.Play3DSound(footstepSounds, transform.position, Random.Range(0.1f, 0.2f));
+    }
+
+    public void Update(){
+        headTransform.LookAt(new Vector3(lookPos.x, lookPos.y + 1, lookPos.z));
     }
 }

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0ccea999bd8c264d814dc88e9b1916b, type: 3}
+  m_Name: StoneBareFootsteps
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 308d651f6d7a71b4fa4d60a41f7206d8, type: 3}
+  - {fileID: 8300000, guid: 67751a3f7fbce564cb030c34a928de31, type: 3}
+  - {fileID: 8300000, guid: c1eefc808c2ee5d44a15d0ac4769ea12, type: 3}
+  - {fileID: 8300000, guid: 833b11673543360488f21b5fd53e94f9, type: 3}
+  - {fileID: 8300000, guid: c298bba4da04d334f8730291521862b4, type: 3}
+  - {fileID: 8300000, guid: b3e966fb79e47304885c38b7a86c7962, type: 3}
+  - {fileID: 8300000, guid: 618ace0b1f729524aa19d9bd71ad8d5e, type: 3}
+  - {fileID: 8300000, guid: 2e363a8d44573bf4c83d2eeccc423930, type: 3}
+  - {fileID: 8300000, guid: 4d29ba9472646bd4d9f7c65c8fe752c4, type: 3}
+  - {fileID: 8300000, guid: 40953e80b8fa4bf47865def2a81805ee, type: 3}
+  - {fileID: 8300000, guid: ca2c2814a84ca9e4fab72a0437480494, type: 3}
+  - {fileID: 8300000, guid: b7a5aac8021a1c949aa5138530b65e82, type: 3}
+  - {fileID: 8300000, guid: ffc17830d11306649b0af8df3ca2fea6, type: 3}
+  - {fileID: 8300000, guid: 6ffc05745b7ffbe479e1ad524c25c58c, type: 3}
